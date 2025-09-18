@@ -1,0 +1,13 @@
+<p>view-students works!</p>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Date of Birth</th>
+    </tr>
+    <tr *ngFor="let s of finalData$ | async">
+        <td>{{s.id}}</td>
+        <td>{{s.name}}</td>
+        <td>{{s.dob}}</td>
+    </tr>
+</table>

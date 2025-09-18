@@ -1,0 +1,31 @@
+<form [formGroup]="formG" (ngSubmit)="addInfo()">
+    <div>
+        <label>name</label>
+        <input type="text" formControlName="name" placeholder="Enter the name">
+        <div *ngIf="formG.get('name')?.['invalid'] && (formG.get('name')?.['dirty'] || formG.get('name')?.['touched'])">
+            <small *ngIf="formG.get('name')?.errors?.['required']">
+                Username is required
+            </small>
+        </div>
+    </div>
+    <div>
+        <label>Date of Birth</label>
+        <input type="text" formControlName="dob" placeholder="Enter DOB">
+        <div *ngIf="formG.get('dob')?.['invalid'] && (formG.get('dob')?.['dirty'] || formG.get('dob')?.['touched'])">
+            <small *ngIf="formG.get('dob')?.errors?.['required']">
+                Date of Birth is required
+            </small>
+            <small *ngIf="formG.get('dob')?.errors?.['pattern']">
+                Date of Birth should be YYYY-MM-DD
+            </small>
+            <!-- {{formG.get('dob')?.errors | json}} -->
+        </div>
+    </div>
+    <input type="submit" value="Register" [disabled]="formG.invalid"/>
+</form>
+<div *ngIf="successStatus">
+    Inserted Successfully!
+</div>
+
+
+<p>add-students works!</p>
