@@ -8,12 +8,16 @@ import { AddStudentsComponent } from './components/add-students/add-students/add
 import { ViewStudentsComponent } from './components/view-students/view-students/view-students.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ViewByIdComponent } from './components/view-by-id/view-by-id/view-by-id.component';
+import { UpdateStudentComponent } from './components/update-student/update-student/update-student.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddStudentsComponent,
-    ViewStudentsComponent
+    ViewStudentsComponent,
+    ViewByIdComponent,
+    UpdateStudentComponent
   ],
   imports: [
     BrowserModule,

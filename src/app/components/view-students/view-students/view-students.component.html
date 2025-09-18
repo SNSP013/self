@@ -1,4 +1,5 @@
 <p>view-students works!</p>
+<input type="text" (input)="searchValue($event)" placeholder="Enter id or name">
 <table>
     <tr>
         <th>Id</th>
@@ -9,5 +10,6 @@
         <td>{{s.id}}</td>
         <td>{{s.name}}</td>
         <td>{{s.dob}}</td>
+        <td><a routerLink="/viewById/{{s.id}}">View</a></td>
     </tr>
 </table>
