@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class NetworkCallServiceService {
-  apiUrl:string = "https://ec2-65-0-31-215.projects.wecreateproblems.com/proxy/8000/students"
+  apiUrl:string = "https://ec2-13-126-47-249.projects.wecreateproblems.com/proxy/8000/students"
   constructor(private http:HttpClient) { }
 
   addStudents(stud:Student):Observable<any>{
@@ -23,6 +23,10 @@ export class NetworkCallServiceService {
   }
 
   updateStudent(id:any,stud:Student):Observable<any>{
-    return this.http.post(this.apiUrl+"/"+id,stud);
+    return this.http.put(this.apiUrl+"/"+id,stud);
+  }
+
+  deleteById(id:any):Observable<any>{
+    return this.http.delete(this.apiUrl+'/'+id);
   }
 }

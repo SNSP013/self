@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ViewByIdComponent } from './components/view-by-id/view-by-id/view-by-id.component';
 import { UpdateStudentComponent } from './components/update-student/update-student/update-student.component';
+import { RouterEvent, RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { UpdateStudentComponent } from './components/update-student/update-stude
     AddStudentsComponent,
     ViewStudentsComponent,
     ViewByIdComponent,
-    UpdateStudentComponent
+    UpdateStudentComponent,
   ],
   imports: [
     BrowserModule,

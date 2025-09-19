@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NetworkCallServiceService } from 'src/app/services/network-call-service.service';
 
 @Component({
@@ -10,13 +11,21 @@ import { NetworkCallServiceService } from 'src/app/services/network-call-service
 export class UpdateStudentComponent {
   formG!:FormGroup
   successStatus:boolean = false;
-  constructor(private fb:FormBuilder,private serviceCall:NetworkCallServiceService){
+  idValues!:string;
+  constructor(private fb:FormBuilder,private serviceCall:NetworkCallServiceService,private ar:ActivatedRoute,private router:Router){
     
   }
   ngOnInit(): void {
+    this.idValues = String(this.ar.snapshot.paramMap.get('id'));
+    if(this.idValues){
+      this.serviceCall.viewById(this.idValues).subscribe((data)=>{
+        this.formG.patchValue(data);
+      })
+    }
+    alert(this.idValues);
     this.formG = this.fb.group({
       name:["",[Validators.required,Validators.minLength(8)]],
-      dob:["",[Validators.required,Validators.pattern('^\\d{4}-\\d{2}-\\d{2}$')]]
+      dob:["",[Validators.required,this.dateValidCheck]]
     })
   }
 
@@ -30,11 +39,9 @@ export class UpdateStudentComponent {
 
   updateInfo(){
     if(this.formG.valid){
-      this.serviceCall.addStudents(this.formG.value).subscribe((data)=>{
-        console.log(data);
-        alert("Success!");
-        this.successStatus=true;
-        this.formG.reset();
+      this.serviceCall.updateStudent(this.idValues,this.formG.value).subscribe((data)=>{
+        alert("Updated Successfully!");
+        this.router.navigate(['/view'])
       })
     }
   }

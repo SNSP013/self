@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
 import { Student } from 'src/app/models/student';
 import { NetworkCallServiceService } from 'src/app/services/network-call-service.service';
@@ -12,8 +12,13 @@ import { NetworkCallServiceService } from 'src/app/services/network-call-service
 export class ViewStudentsComponent {
   data$:Observable<Student[]>=of([]);
   finalData$:Observable<Student[]>=of([]);
-  constructor(private ar:ActivatedRoute,private serviceCall:NetworkCallServiceService){}
+  idVal!:string;
+  constructor(private ar:ActivatedRoute,private serviceCall:NetworkCallServiceService,private router:Router){}
   ngOnInit(): void {
+    this.idVal = String(this.ar.snapshot.paramMap.get('id'));
+    if(this.idVal){
+      this.deleteInfo(this.idVal);
+    }
     this.getData();
   }
   getData(){
@@ -36,4 +41,11 @@ export class ViewStudentsComponent {
       )
     }
   }
+
+  deleteInfo(id:any){
+    this.serviceCall.deleteById(id).subscribe(()=>{
+      this.router.navigate(['/view'])
+    })
+  }
+
 }

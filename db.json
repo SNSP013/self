@@ -1,14 +1,3 @@
 {
-  "students": [
-    {
-      "id": "54e5",
-      "name": "preetham",
-      "dob": "2004-07-20"
-    },
-    {
-      "id": "629e",
-      "name": "Vmashisad",
-      "dob": "4328-34-43"
-    }
-  ]
+  "students": []
 }
