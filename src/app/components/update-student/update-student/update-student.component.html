@@ -19,7 +19,18 @@
             <small *ngIf="formG.get('dob')?.errors?.['pattern']">
                 Date of Birth should be YYYY-MM-DD
             </small>
-            <!-- {{formG.get('dob')?.errors | json}} -->
+        </div>
+    </div>
+    <div>
+        <label>Phone Number</label>
+        <input type="text" formControlName="phNo" placeholder="Enter phone number">
+        <div *ngIf="formG.get('phNo')?.['invalid'] && (formG.get('phNo')?.['dirty'] || formG.get('phNo')?.['touched'])">
+            <small *ngIf="formG.get('phNo')?.errors?.['required']">
+                Phone Number is required
+            </small>
+            <small *ngIf="formG.get('phNo')?.errors?.['retVal'] && !formG.get('phNo')?.errors?.['required']">
+                Phone number is invalid
+            </small>
         </div>
     </div>
     <input type="submit" value="Update" [disabled]="formG.invalid"/>

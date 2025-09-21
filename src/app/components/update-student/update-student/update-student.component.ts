@@ -24,9 +24,18 @@ export class UpdateStudentComponent {
     }
     alert(this.idValues);
     this.formG = this.fb.group({
-      name:["",[Validators.required,Validators.minLength(8)]],
-      dob:["",[Validators.required,this.dateValidCheck]]
+      name:["",[Validators.required,Validators.minLength(5),Validators.maxLength(70)]],
+      dob:["",[Validators.required,this.dateValidCheck]],
+      phNo:["",[Validators.required,this.phoneNumberValidCheck]]
     })
+  }
+
+  phoneNumberValidCheck(cont:AbstractControl):ValidationErrors | null{
+    const phNoCheck = /^[6-9]\d{9}$/
+    if(!phNoCheck.test(cont.value)){
+      return {retVal:true};
+    }
+    return null;
   }
 
   dateValidCheck(val:AbstractControl):ValidationErrors | null{

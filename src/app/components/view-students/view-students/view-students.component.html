@@ -4,14 +4,25 @@
     <tr>
         <th>Id</th>
         <th>Name</th>
+        <th>Department</th>
+        <th>Course</th>
+        <th>Email</th>
         <th>Date of Birth</th>
+        <th>Phone Number</th>
+        <th>Location</th>
     </tr>
     <tr *ngFor="let s of finalData$ | async">
         <td>{{s.id}}</td>
         <td>{{s.name}}</td>
+        <td>{{s.department}}</td>
+        <td>{{s.course}}</td>
+        <td>{{s.email}}</td>
         <td>{{s.dob}}</td>
+        <td>{{s.phNo}}</td>
+        <td>{{s.location}}</td>
         <td><a routerLink="/viewById/{{s.id}}">View</a></td>
         <td><a routerLink="/update/{{s.id}}">Update</a></td>
         <td><a routerLink="/delete/{{s.id}}">Delete</a></td>
+        
     </tr>
 </table>
