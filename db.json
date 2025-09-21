@@ -1,20 +1,3 @@
 {
-  "students": [
-    {
-      "id": "77fc",
-      "name": "Preetham",
-      "dob": "2004-07-20",
-      "phNo": "9738802893"
-    },
-    {
-      "id": "fcb6",
-      "name": "Alexa",
-      "department": "CSE",
-      "course": "Data Science",
-      "email": "Alexa007@gmail.com",
-      "dob": "2000-12-28",
-      "phNo": "+918903909039",
-      "location": "Church Gate"
-    }
-  ]
+  "students": []
 }
